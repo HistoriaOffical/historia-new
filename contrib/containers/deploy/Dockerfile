@@ -1,5 +1,5 @@
 FROM phusion/baseimage:focal-1.0.0
-LABEL maintainer="Historia Developers <dev@historia.org>"
+LABEL maintainer="Historia Developers <info@historia.network>"
 LABEL description="Dockerised HistoriaCore, built from Travis"
 
 ARG USER_ID
@@ -23,6 +23,6 @@ USER historia
 
 VOLUME ["/home/historia"]
 
-EXPOSE 9998 9999 19998 19999
+EXPOSE 35776 35777 10100 10101
 
 WORKDIR /home/historia

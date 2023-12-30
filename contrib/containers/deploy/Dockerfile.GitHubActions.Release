@@ -37,6 +37,6 @@ VOLUME ["/home/historia"]
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-EXPOSE 9998 9999 19998 19999
+EXPOSE 35776 35777 10100 10101
 
 WORKDIR /home/historia

@@ -41,7 +41,7 @@ RUN groupadd docker && \
 ENV DEBIAN_FRONTEND="dialog"
 
 # Expose Historia P2P and RPC ports for main network and test networks
-EXPOSE 9998 9999 19998 19999
+EXPOSE 10100 10101 35776 35777
 
 # We're done, switch back to non-privileged user
 USER historia
