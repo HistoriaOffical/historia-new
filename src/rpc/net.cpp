@@ -248,7 +248,8 @@ static UniValue addnode(const JSONRPCRequest& request)
     std::string strCommand;
     if (!request.params[1].isNull())
         strCommand = request.params[1].get_str();
-    RPCHelpMan{"addnode",
+    RPCHelpMan{
+        "addnode",
         "\nAttempts to add or remove a node from the addnode list.\n"
         "Or try a connection to a node once.\n"
         "Nodes added using addnode (or -connect) are protected from DoS disconnection and are not required to be\n"
@@ -259,8 +260,7 @@ static UniValue addnode(const JSONRPCRequest& request)
         },
         RPCResult{RPCResult::Type::NONE, "", ""},
         RPCExamples{
-            HelpExampleCli("addnode", "\"192.168.0.6:9999\" \"onetry\"")
-    + HelpExampleRpc("addnode", "\"192.168.0.6:9999\", \"onetry\"")
+            HelpExampleCli("addnode", "\"192.168.0.6:10101\" \"onetry\"") + HelpExampleRpc("addnode", "\"192.168.0.6:10101\", \"onetry\"")
         },
     }.Check(request);
 
@@ -293,7 +293,8 @@ static UniValue addnode(const JSONRPCRequest& request)
 
 static UniValue disconnectnode(const JSONRPCRequest& request)
 {
-    RPCHelpMan{"disconnectnode",
+    RPCHelpMan{
+        "disconnectnode",
         "\nImmediately disconnects from the specified peer node.\n"
         "\nStrictly one out of 'address' and 'nodeid' can be provided to identify the node.\n"
         "\nTo disconnect by nodeid, either set 'address' to the empty string, or call using the named 'nodeid' argument only.\n",
@@ -303,9 +304,7 @@ static UniValue disconnectnode(const JSONRPCRequest& request)
         },
         RPCResult{RPCResult::Type::NONE, "", ""},
         RPCExamples{
-            HelpExampleCli("disconnectnode", "\"192.168.0.6:9999\"")
-    + HelpExampleCli("disconnectnode", "\"\" 1")
-    + HelpExampleRpc("disconnectnode", "\"192.168.0.6:9999\"")
+            HelpExampleCli("disconnectnode", "\"192.168.0.6:10101\"") + HelpExampleCli("disconnectnode", "\"\" 1") + HelpExampleRpc("disconnectnode", "\"192.168.0.6:10101\"")
     + HelpExampleRpc("disconnectnode", "\"\", 1")
         },
     }.Check(request);
@@ -836,21 +835,23 @@ static UniValue getnodeaddresses(const JSONRPCRequest& request)
 
 static UniValue addpeeraddress(const JSONRPCRequest& request)
 {
-    RPCHelpMan{"addpeeraddress",
+    RPCHelpMan{
+        "addpeeraddress",
         "\nAdd the address of a potential peer to the address manager. This RPC is for testing only.\n",
         {
             {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The IP address of the peer"},
             {"port", RPCArg::Type::NUM, RPCArg::Optional::NO, "The port of the peer"},
         },
         RPCResult{
-            RPCResult::Type::OBJ, "", "",
+            RPCResult::Type::OBJ,
+            "",
+            "",
             {
                 {RPCResult::Type::BOOL, "success", "whether the peer address was successfully added to the address manager"},
             },
         },
         RPCExamples{
-            HelpExampleCli("addpeeraddress", "\"1.2.3.4\" 9999")
-    + HelpExampleRpc("addpeeraddress", "\"1.2.3.4\", 9999")
+            HelpExampleCli("addpeeraddress", "\"1.2.3.4\" 10101") + HelpExampleRpc("addpeeraddress", "\"1.2.3.4\", 10101")
         },
     }.Check(request);
 
