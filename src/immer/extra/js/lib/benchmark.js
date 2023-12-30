@@ -123,8 +123,8 @@
    * @returns {Function} Returns a new `Benchmark` function.
    */
   function runInContext(context) {
-    // Exit early if unable to acquire lodash.
-    var _ = context && context._ || require('lodash') || root._;
+    // Exit early if unable to acquire lohistoria.
+    var _ = context && context._ || require('lohistoria') || root._;
     if (!_) {
       Benchmark.runInContext = runInContext;
       return Benchmark;
@@ -275,12 +275,12 @@
     /**
      * The Benchmark constructor.
      *
-     * Note: The Benchmark constructor exposes a handful of lodash methods to
-     * make working with arrays, collections, and objects easier. The lodash
+     * Note: The Benchmark constructor exposes a handful of lohistoria methods to
+     * make working with arrays, collections, and objects easier. The lohistoria
      * methods are:
-     * [`each/forEach`](https://lodash.com/docs#forEach), [`forOwn`](https://lodash.com/docs#forOwn),
-     * [`has`](https://lodash.com/docs#has), [`indexOf`](https://lodash.com/docs#indexOf),
-     * [`map`](https://lodash.com/docs#map), and [`reduce`](https://lodash.com/docs#reduce)
+     * [`each/forEach`](https://lohistoria.com/docs#forEach), [`forOwn`](https://lohistoria.com/docs#forOwn),
+     * [`has`](https://lohistoria.com/docs#has), [`indexOf`](https://lohistoria.com/docs#indexOf),
+     * [`map`](https://lohistoria.com/docs#map), and [`reduce`](https://lohistoria.com/docs#reduce)
      *
      * @constructor
      * @param {string} name A name to identify the benchmark.
@@ -425,10 +425,10 @@
     /**
      * The Suite constructor.
      *
-     * Note: Each Suite instance has a handful of wrapped lodash methods to
-     * make working with Suites easier. The wrapped lodash methods are:
-     * [`each/forEach`](https://lodash.com/docs#forEach), [`indexOf`](https://lodash.com/docs#indexOf),
-     * [`map`](https://lodash.com/docs#map), and [`reduce`](https://lodash.com/docs#reduce)
+     * Note: Each Suite instance has a handful of wrapped lohistoria methods to
+     * make working with Suites easier. The wrapped lohistoria methods are:
+     * [`each/forEach`](https://lohistoria.com/docs#forEach), [`indexOf`](https://lohistoria.com/docs#indexOf),
+     * [`map`](https://lohistoria.com/docs#map), and [`reduce`](https://lohistoria.com/docs#reduce)
      *
      * @constructor
      * @memberOf Benchmark
@@ -2293,7 +2293,7 @@
       'support': support
     });
 
-    // Add lodash methods to Benchmark.
+    // Add lohistoria methods to Benchmark.
     _.each(['each', 'forEach', 'forOwn', 'has', 'indexOf', 'map', 'reduce'], function(methodName) {
       Benchmark[methodName] = _[methodName];
     });
@@ -2741,7 +2741,7 @@
 
     /*------------------------------------------------------------------------*/
 
-    // Add lodash methods as Suite methods.
+    // Add lohistoria methods as Suite methods.
     _.each(['each', 'forEach', 'indexOf', 'map', 'reduce'], function(methodName) {
       var func = _[methodName];
       Suite.prototype[methodName] = function() {
@@ -2784,7 +2784,7 @@
   // Some AMD build optimizers, like r.js, check for condition patterns like the following:
   if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
     // Define as an anonymous module so, through path mapping, it can be aliased.
-    define(['lodash', 'platform'], function(_, platform) {
+    define(['lohistoria', 'platform'], function(_, platform) {
       return runInContext({
         '_': _,
         'platform': platform

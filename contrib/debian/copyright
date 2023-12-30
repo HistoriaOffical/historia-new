@@ -1,15 +1,15 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: Dash Core
-Upstream-Contact: Dash Core Group, Inc https://www.dash.org/team/
-Source: https://github.com/dashpay/dash
+Upstream-Name: Historia Core
+Upstream-Contact: Historia Core Group, Inc https://www.historia.org/team/
+Source: https://github.com/historia/historia
 
 Files: *
 Copyright: 2009-2020, Bitcoin Core Developers,
-           2019-2020, Dash Core Developers
+           2019-2020, Historia Core Developers
 License: Expat
 Comment: The Bitcoin Core Developers encompasses the current developers listed on bitcoin.org,
-         as well as the numerous contributors to the project. The Dash Core Developers
-         encompasses the current developers listed on https://www.dash.org/team/, as well as
+         as well as the numerous contributors to the project. The Historia Core Developers
+         encompasses the current developers listed on https://www.historia.org/team/, as well as
          the numerous contributors to the project.
 
 Files: debian/*

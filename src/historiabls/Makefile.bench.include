@@ -1,0 +1,22 @@
+# Copyright (c) 2021 The PIVX developers
+# Copyright (c) 2022 The Historia Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING.MIT or http://www.opensource.org/licenses/mit-license.php.
+
+HISTORIABLS_RUNBENCH = runbench
+
+runbench_SOURCES = \
+	src/test-bench.cpp \
+	src/test-utils.hpp
+
+runbench_SOURCES += \
+	$(RELIC_H) \
+	$(HISTORIABLS_H)
+
+runbench_CPPFLAGS = $(AM_CPPFLAGS) $(HISTORIABLS_INCLUDES) $(RELIC_INCLUDES)
+runbench_CXXFLAGS = $(AM_CXXFLAGS)
+runbench_LDFLAGS  = -static $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+
+runbench_LDADD = $(LIBHISTORIABLS)
+
+noinst_PROGRAMS += $(HISTORIABLS_RUNBENCH)

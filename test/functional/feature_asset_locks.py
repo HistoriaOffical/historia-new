@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2022 The Dash Core developers
+# Copyright (c) 2022 The Historia Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -36,7 +36,7 @@ from test_framework.script import (
     OP_RETURN,
     hash160,
 )
-from test_framework.test_framework import DashTestFramework
+from test_framework.test_framework import HistoriaTestFramework
 from test_framework.util import (
     assert_equal,
     assert_greater_than,
@@ -49,9 +49,9 @@ llmq_type_test = 100
 tiny_amount = int(Decimal("0.0007") * COIN)
 blocks_in_one_day = 576
 
-class AssetLocksTest(DashTestFramework):
+class AssetLocksTest(HistoriaTestFramework):
     def set_test_params(self):
-        self.set_dash_test_params(5, 3)
+        self.set_historia_test_params(5, 3)
 
     def skip_test_if_missing_module(self):
         self.skip_if_no_wallet()

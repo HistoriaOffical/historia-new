@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Historia Core consensus library
+Description: Library for the Historia consensus protocol.
+Version: 20.0.3
+Libs: -L${libdir} -lhistoriaconsensus
+Cflags: -I${includedir}

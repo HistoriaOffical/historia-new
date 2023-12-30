@@ -128,7 +128,7 @@ public Q_SLOTS:
     void requestedSyncWarningInfo();
 
 
-    /** Update selected DASH amount from transactionview */
+    /** Update selected HISTORIA amount from transactionview */
     void trxAmount(QString amount);
 Q_SIGNALS:
     void transactionClicked();
