@@ -148,7 +148,9 @@ public:
     const std::vector<std::string>& SporkAddresses() const { return vSporkAddresses; }
     int MinSporkKeys() const { return nMinSporkKeys; }
     std::optional<Consensus::LLMQParams> GetLLMQ(Consensus::LLMQType llmqType) const;
-
+    unsigned int DGWActivationBlock() const { return nDGWActivationBlock; }
+    uint32_t X16RV2ActivationTime() const { return nX16RV2ActivationTime; }
+    
 protected:
     CChainParams() {}
 
@@ -183,6 +185,8 @@ protected:
     int nMinSporkKeys;
     uint16_t nDefaultPlatformP2PPort;
     uint16_t nDefaultPlatformHTTPPort;
+    unsigned int nDGWActivationBlock;
+    uint32_t nX16RV2ActivationTime;
 
     void AddLLMQ(Consensus::LLMQType llmqType);
 };

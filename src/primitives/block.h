@@ -54,7 +54,9 @@ public:
     }
 
     uint256 GetHash() const;
-
+    uint256 GetX16RHash() const;
+    uint256 GetX16RV2Hash() const;
+    
     int64_t GetBlockTime() const
     {
         return (int64_t)nTime;

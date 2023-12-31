@@ -4,17 +4,32 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <primitives/block.h>
-
+#include <chainparams.h>
+#include "versionbits.h"
 #include <hash.h>
 #include <streams.h>
 #include <tinyformat.h>
+#include "crypto/common.h"
+#include "util/strencodings.h"
+#include "algo/hash_algos.h"
 
 uint256 CBlockHeader::GetHash() const
 {
-    std::vector<unsigned char> vch(80);
-    CVectorWriter ss(SER_GETHASH, PROTOCOL_VERSION, vch, 0);
-    ss << *this;
-    return HashX11((const char *)vch.data(), (const char *)vch.data() + vch.size());
+    if (nTime >= Params().X16RV2ActivationTime()) {
+        return HashX16RV2(BEGIN(nVersion), END(nNonce), hashPrevBlock);
+    }
+
+    return HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
+}
+
+uint256 CBlockHeader::GetX16RHash() const
+{
+    return HashX16R(BEGIN(nVersion), END(nNonce), hashPrevBlock);
+}
+
+uint256 CBlockHeader::GetX16RV2Hash() const
+{
+    return HashX16RV2(BEGIN(nVersion), END(nNonce), hashPrevBlock);
 }
 
 std::string CBlock::ToString() const

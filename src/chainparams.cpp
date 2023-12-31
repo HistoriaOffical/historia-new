@@ -246,7 +246,8 @@ public:
         m_assumed_chain_state_size = 1;
 
         genesis = CreateGenesisBlock(1537727425, 480901, 0x1e0ffff0, 1, 50 * COIN);
-        consensus.hashGenesisBlock = genesis.GetHash();
+        //consensus.hashGenesisBlock = genesis.GetHash();
+        consensus.hashGenesisBlock = genesis.GetX16RHash();
         assert(consensus.hashGenesisBlock == uint256S("0x00000eabb15c5ad6e93847c3913bc312c716e16e6c0158de004d53df1f58067f"));
         assert(genesis.hashMerkleRoot == uint256S("0x643974c3c2102a20cebe83f85c3d2e58e162e5726c52da196c9e5c0e2c250df0"));
 
@@ -418,7 +419,8 @@ public:
 
         genesis = CreateGenesisBlock(1562087928, 595126, 0x1e0ffff0, 1, 50 * COIN);
 
-        consensus.hashGenesisBlock = genesis.GetHash();
+        //consensus.hashGenesisBlock = genesis.GetHash();
+        consensus.hashGenesisBlock = genesis.GetX16RHash();
         assert(consensus.hashGenesisBlock == uint256S("0x0000041cc669bdfe689ad2df2be69573387dc62b9d6c6adb3a1f9825e18e5685"));
         assert(genesis.hashMerkleRoot == uint256S("0x643974c3c2102a20cebe83f85c3d2e58e162e5726c52da196c9e5c0e2c250df0"));
 
@@ -470,7 +472,7 @@ public:
         nPoolMaxParticipants = 20;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        vSporkAddresses = {"yjPtiKh2uwk3bDutTEA2q9mCtXyiZRWn55"};
+        vSporkAddresses = {"TnwzFKJUXy2JZov9o1b6aB7F1E7ujRVZQR"};
         nMinSporkKeys = 1;
 
         checkpointData = {
@@ -484,12 +486,12 @@ public:
         };
 
         // getchaintxstats 17280 0000020c5e0f86f385cbf8e90210de9a9fd63633f01433bf47a6b3227a2851fd
-        chainTxData = ChainTxData{
-                1698870742, // * UNIX timestamp of last known number of transactions (Block 905100)
-                5952838,    // * total number of transactions between genesis and that timestamp
+        //chainTxData = ChainTxData{
+        //        1698870742, // * UNIX timestamp of last known number of transactions (Block 905100)
+        //        5952838,    // * total number of transactions between genesis and that timestamp
                             //   (the tx=... number in the ChainStateFlushed debug.log lines)
-                0.009046572717013628,       // * estimated number of transactions per second after that timestamp
-        };
+        //        0.009046572717013628,       // * estimated number of transactions per second after that timestamp
+        //};
     }
 };
 
@@ -581,7 +583,8 @@ public:
 
         UpdateDevnetSubsidyAndDiffParametersFromArgs(args);
         genesis = CreateGenesisBlock(1417713337, 1096447, 0x207fffff, 1, 50 * COIN);
-        consensus.hashGenesisBlock = genesis.GetHash();
+        //consensus.hashGenesisBlock = genesis.GetHash();
+        consensus.hashGenesisBlock = genesis.GetX16RHash();
         assert(consensus.hashGenesisBlock == uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e"));
         assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
 
@@ -834,10 +837,10 @@ public:
         UpdateDIP8ParametersFromArgs(args);
         UpdateBudgetParametersFromArgs(args);
 
-        genesis = CreateGenesisBlock(1417713337, 1096447, 0x207fffff, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1575564835, 221058, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe0028eb9648db56b1ac77cf090b99048a8007e2bb64b68f092c03c7f56a662c7"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000f56a1703e285bb4a589f8e4d5ec919c6ddc52c8457724f353b330f8b42f"));
+        assert(genesis.hashMerkleRoot == uint256S("0x643974c3c2102a20cebe83f85c3d2e58e162e5726c52da196c9e5c0e2c250df0"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
@@ -856,24 +859,18 @@ public:
         nPoolMaxParticipants = 20;
 
         // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
-        vSporkAddresses = {"yj949n1UH6fDhw6HtVE5VMj2iSTaSWBMcW"};
+        vSporkAddresses = {"TnwzFKJUXy2JZov9o1b6aB7F1E7ujRVZQR"};
+        
         nMinSporkKeys = 1;
 
         checkpointData = {
             {
-                {0, uint256S("0x000008ca1832a4baf228eb1553c03d3a2c8e02399550dd6ea8d65cec3ef23d2e")},
+                {0, uint256S("0x0000041cc669bdfe689ad2df2be69573387dc62b9d6c6adb3a1f9825e18e5685")},
             }
         };
 
         m_assumeutxo_data = MapAssumeutxo{
-            {
-                110,
-                {AssumeutxoHash{uint256S("0x9b2a277a3e3b979f1a539d57e949495d7f8247312dbc32bce6619128c192b44b")}, 110},
-            },
-            {
-                210,
-                {AssumeutxoHash{uint256S("0xd4c97d32882583b057efc3dce673e44204851435e6ffcef20346e69cddc7c91e")}, 210},
-            },
+
         };
 
         chainTxData = ChainTxData{

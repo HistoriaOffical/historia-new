@@ -108,6 +108,13 @@ public:
     constexpr uint256() = default;
     constexpr explicit uint256(uint8_t v) : base_blob<256>(v) {}
     constexpr explicit uint256(Span<const unsigned char> vch) : base_blob<256>(vch) {}
+    int GetNibble(int index) const
+    {
+        index = 63 - index;
+        if (index % 2 == 1)
+        return (m_data[index / 2] >> 4);
+        return (m_data[index / 2] & 0x0F);
+    }
     static const uint256 ZERO;
     static const uint256 ONE;
     static const uint256 TWO;
